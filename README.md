@@ -3,8 +3,10 @@
 
 
 INFO2180 - WEB DEVELOPMENT 1
-FINAL PROJECT
+FINAL PROJECT Group 16 Members 
 
-Group Members 
 
-Krystall Messam 
+Krystall Messam
+La Shawn Williams
+Jonelle Ramlal
+Delano Barclay
