@@ -20,8 +20,8 @@ CREATE TABLE issues(
   `status` enum('Open','Closed', 'In Progress') NOT NULL default 'Open',
   `assigned_to` char(35) NOT NULL default '',
   `created_by` char(35) NOT NULL default '',
-  `created` datetime NOT NULL default CURRENT_TIMESTAMP,
-  `updated` datetime NOT NULL default CURRENT_TIMESTAMP,
+  `created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4080 DEFAULT CHARSET=utf8mb4;
 
@@ -31,19 +31,15 @@ CREATE TABLE issues(
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
-`id` int(11) NOT NULL auto_increment,
-  `first_name` char(35) NOT NULL default '',
-  `last_name` char(35) NOT NULL default '',
-  `password` nvarchar(20) NOT NULL default '',
+`id` INT auto_increment,
+  `first_name` char(35) NULL default '',
+  `last_name` char(35)  NULL default '',
+  `password` nvarchar(16) NULL default '',
   `email` char(35) NOT NULL default '',
-  `date_joined` int(11) NOT NULL default '0',
+  `date_joined` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4080 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO users(email, password) VALUES ('admin@bugme.com', 'password123');
-
-
-
-
 
 

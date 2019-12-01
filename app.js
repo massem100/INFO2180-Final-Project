@@ -33,27 +33,30 @@ window.onload = () =>{
        $.ajax({
             type: "POST",
             url: "/PHP SCRIPTS/newuser.php",
-            data: $("#user_form").serialize(), 
-            success: function(data) {
+            data: $("#submit").serializeArray(), 
+            // success: function(data) {
+            //     //  header("Location: /HTML FILES/newuser.html");
+                 
+                dataType: "text"
+                    
+           }).done((data)=> {
+                    
                 var result = document.getElementById("content");
                 result.innerHTML = data;
                 
-                var user_submit = document.getElementById("submit");
-                user_submit.addEventListener("click", (e)=>{ 
-                    e.preventDefault();
-                    console.log("SUBMIT BTN CLICKED");
-                    // successMsg();
+                   $("#submit").submit((e)=>{
+                        e.preventDefault();
+                      });
                     
-                    
-                    
-                  }).done((response)=> {
+                
                     
                     // $("#SUCCESS").removeClass('error');
                     //  $("#SUCCESS").addClass('success');
                      
-                      $("#SUCCESS").text(response);
+                      $("#SUCCESS").text(data);
                      
                     //  success_msg.val('');
+                    
                     
                     
                 }).fail( (data)=>{
@@ -68,10 +71,6 @@ window.onload = () =>{
                           $("#SUCCESS").innerHTML = " Form Information could not be sent, Reload."
                      }
                      });
-                },
-                    dataType: "text"
-                    
-                });
                      
                 
     });
@@ -118,7 +117,7 @@ window.onload = () =>{
             data: $("#login-form").serializeArray(), 
             success: function(data) {
             
-                let result = document.getElementById("content");
+                let result = document.getElementById("home-page");
                 result.innerHTML = data;
                 
              
