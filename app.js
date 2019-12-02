@@ -10,8 +10,8 @@ window.onload = () =>{
             data: $("#login-form").serializeArray(), 
             success: function(data) {
             
-                let result = document.getElementById("content");
-                result.innerHTML = data;
+                // let result = document.getElementById("content");
+                // result.innerHTML = data;
                 
                 
              
@@ -29,6 +29,8 @@ window.onload = () =>{
         
                 $("#fields").hide();
                 $("#Filters").hide();
+                $("#output_table").hide();
+                
                 
        $.ajax({
             type: "POST",
@@ -48,11 +50,8 @@ window.onload = () =>{
                         e.preventDefault();
                       });
                     
-                
                     
-                    // $("#SUCCESS").removeClass('error');
-                    //  $("#SUCCESS").addClass('success');
-                     
+                    
                       $("#SUCCESS").text(data);
                      
                     //  success_msg.val('');
@@ -63,14 +62,8 @@ window.onload = () =>{
                     
                     $("#SUCCESS").removeClass('success');
                     $("#SUCCESS").addClass('error');
-                     
-                     if (data.response !== ''){
-                          $("#SUCCESS").response(data.responseText);
-                         
-                     }else{
-                          $("#SUCCESS").innerHTML = " Form Information could not be sent, Reload."
-                     }
-                     });
+                });
+                
                      
                 
     });
@@ -81,8 +74,10 @@ window.onload = () =>{
         Issue_link.addEventListener("click", (e)=>{
          e.preventDefault();
          console.log("CREATE NEW ISSUE CLICKED");
-          $("#fields").hide();
+                 $("#fields").hide();
                 $("#Filters").hide();
+                 $("#output_table").hide();
+                
        $.ajax({
             type: "POST",
             url: "/PHP SCRIPTS/createissue.php",
@@ -191,5 +186,46 @@ window.onload = () =>{
 	
 
 }
+
+function filterSelection(input) {
+                var filter, table, tr, td, i, txtValue;
+                filter = input.toUpperCase();
+                table = document.getElementById("issue-content-table");
+                tr = table.getElementsByTagName("tr");
+                for (i = 1; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[2].getAttribute("data-status");
+                    if (td) {
+                        if (td.toUpperCase() === filter || filter === "ALL"){
+                            tr[i].style.display = "";
+                        }
+                        else{
+                            tr[i].style.display = "none";
+                        }
+                    } 
+                }
+            }
+
+            function filterMyTicket(input) {
+                var filter, table, tr, td, i, txtValue;
+                filter = input.toUpperCase();
+                table = document.getElementById("issue-content-table");
+                tr = table.getElementsByTagName("tr");
+                for (i = 1; i < tr.length; i++) {
+                    assignee = tr[i].getElementsByTagName("td")[3].textContent;
+
+                    //function to get user from DB
+                    
+                    var user = "James Harbey";
+                    
+                    if (assignee) {
+                        if (assignee === user){
+                            tr[i].style.display = "";
+                        }
+                        else{
+                            tr[i].style.display = "none";
+                        }
+                    } 
+                }
+            }
 
 }

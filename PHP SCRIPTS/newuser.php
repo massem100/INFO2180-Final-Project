@@ -11,8 +11,8 @@ $dbname = "schema";
                
     <script src="/app.js" type="text/javascript"></script>
 <?php
-// header("Location: /HTML FILES/newuser.html");
 
+        header("Location: /HTML FILES/newuser.html");
              
         $fname= filter_var(trim($_POST['FirstName']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
         $lname= filter_var(trim($_POST['LastName']), FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
@@ -27,6 +27,10 @@ $dbname = "schema";
 
                 $sql = "INSERT INTO users (first_name, last_name,password,email)
                 VALUES ($fname, $lname, $pass,$email)";
+                
+                
+                $stmt->execute();
+                
         
                 $conn->exec($sql);
         
@@ -40,7 +44,7 @@ $dbname = "schema";
         // $conn = null;
         }
         
-        header("Location: /HTML FILES/newuser.html");
+
 
 function successMsg(){
      echo "<h5>" . "New record created successfully". "</h5>";

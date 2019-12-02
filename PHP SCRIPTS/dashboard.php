@@ -63,7 +63,7 @@ $dbname = "schema";
                 </div>
             </div>';
 
-			echo '<table>'; 
+			echo '<table id = "output_table">'; 
                     echo '<tr>'; 
                     echo '<th> Title </th>'; 
                     echo '<th> Type </th>'; 

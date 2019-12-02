@@ -6,10 +6,6 @@
  ?>
 
 
-
-
-
-
 <html>
 <head>
         <title> BugMe Issue Tracker- Issue Details </title>
@@ -42,6 +38,7 @@
         echo'<p>'.$row['created-by'].'</p>';
         echo'<p>'.$row['updated'].'</p>';
         echo '</body>';
+        
     $issue= array();
     try {
         $conn = new PDO("mysql: host=$host; dbname=$dbname;", $dbusername, $dbpass);
