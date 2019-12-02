@@ -1,15 +1,56 @@
 <?php 
 $_POST[''];
 
+  
+$host = "localhost";
+$dbusername = "final_user";
+$dbpass = "SQLpass";
+$dbname = "schema";
+?>
+<html>
+<link rel = "stylesheet" href= "/CSS SCRIPTS/dashboard.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/app.js" type="text/javascript"></script>
+</html>
+
+    <?php 
     
-    echo '<div id = "fields">
+             
+            $conn = new PDO("mysql: host=$host; dbname=$dbname;", $dbusername, $dbpass);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+            $stmt = $conn-> query("SELECT * FROM issues"); 
+			$results = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+			
+// 			header("Location: /HTML FILES/dashboard.html");
+            
+             echo' <div class = "header"> 
+              <div id= "header-container">
+                  <img id = "image" src = "/icons/bug white.png"
+                  <h3 id ="Bugme">Bugme Issue Tracker</h3> 
+              </div>
+                    
+         </div>
+               
+             <div id = "nav">
+                 
+                  <div id ="link">
+                     <p id = "home_btn"><img src="/icons/Home icon.png" > Home</p> <br>
+                    <p id = "user_link"><img src="/icons/add user.png" > Add New User</p><br>
+                       <p id = "Issue_link" > <img src="/icons/new.png" > New Issue </p><br>
+                       <p id = "Logout" ><img src="/icons/Logout.png" > Logout</p>
+                     </div>
+                     
+            </div>';
+            
+			echo '<div id = "fields">
             <div id = "issues_wrapper">
                 
-               <h1>Issues</h1>
-               <h4 id= "Issue">Create New Issue</h4>
+              <h1>Issues</h1>
+              <h4 id= "Issue">Create New Issue</h4>
             </div>
         <div id = "Filters">
-                   <h4 id = "Filter">Filter by:</h4>
+                  <h4 id = "Filter">Filter by:</h4>
                     <h4 class = "highlight" id = "All">ALL</h4>
                     <h4 class = "highlight" id = "Open">OPEN</h4>
                     <h4 class = "highlight" id = "Tickets">MY TICKETS</h4>
@@ -22,4 +63,27 @@ $_POST[''];
                 </div>
             </div>';
 
+			echo '<table>'; 
+                    echo '<tr>'; 
+                    echo '<th> Title </th>'; 
+                    echo '<th> Type </th>'; 
+                    echo '<th>Status</th>'; 
+                    echo '<th>Assigned To</th>'; 
+                    echo '<th>Created</th>';
+                    echo '</tr>'; 
+                    
+                    foreach ($results as $row){ 
+                    
+                        echo '<tr>'; 
+                        echo '<td>' . $row['title'] . '</td>'; 
+                        echo '<td>' . $row['issue_type'] . '</td>';
+                        echo '<td>' . $row['status'] . '</td>'; 
+                        echo '<td>' . $row['assigned_to'] . '</td>';
+                        echo '<td>' . $row['created'] . '</td>';
+                        echo '</tr>';
+                     
+                    } 
+                   
+        echo '</table>';
+        
 ?>

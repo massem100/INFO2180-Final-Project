@@ -18,11 +18,6 @@ $_POST['issue_form'];
 
    header("Location: /HTML FILES/createissue.html");
    
-  
-
-
-    
-        
         try {
             $conn = new PDO("mysql: host=$host; dbname=$dbname;", $dbusername, $dbpass);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -40,12 +35,10 @@ $_POST['issue_form'];
             echo $sql . "<br>" . $e->getMessage();
             }
         
-        // $conn = null;
+        $conn = null;
         }
 
-function successMsg(){
-     echo "<h5>" . "New record created successfully". "</h5>";
-}
+
 
 ?>
  

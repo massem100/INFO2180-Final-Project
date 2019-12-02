@@ -86,7 +86,7 @@ window.onload = () =>{
        $.ajax({
             type: "POST",
             url: "/PHP SCRIPTS/createissue.php",
-            data: $("#issue_form").serialize(), 
+            data: $("#issue_form").serializeArray(), 
             success: function(data) {
             
                 let result = document.getElementById("content");
@@ -114,7 +114,7 @@ window.onload = () =>{
        $.ajax({
             type: "POST",
             url: "/PHP SCRIPTS/logout.php",
-            data: $("#login-form").serializeArray(), 
+            data: "YOU have logged out",
             success: function(data) {
             
                 let result = document.getElementById("home-page");
