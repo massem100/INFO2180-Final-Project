@@ -1,60 +1,104 @@
- <html> 
- 
-
- <head> 
-       <title> BugMe Issue Tracker- Home </title>
-       <link rel = "stylesheet" href= "/CSS SCRIPTS/dashboard.css"/>
-      
-</head>
-     
- 
- <body id ="dashboard">
- 
-         <div class = "header"> 
-              <div id= "header-container">
-                  <img id = "image" src = "/icons/bug white.png"
-                  <h3 id ="Bugme">Bugme Issue Tracker</h3> 
-              </div>
-                    
-         </div>
-               
-             <div id = "nav">
-                 
-                  <div id ="link">
-                     <p id = "home_btn"><img src="/icons/Home icon.png" > Home</p> <br>
-                    <p id = "user_link"><img src="/icons/add user.png" > Add New User</p><br>
-                       <p id = "Issue_link" > <img src="/icons/new.png" > New Issue </p><br>
-                       <p id = "Logout" ><img src="/icons/Logout.png" > Logout</p>
-                     </div>
-                     
-            </div>
-                    
-         
-    <!--<div id = "fields">-->
-    <!--        <div id = "issues_wrapper">-->
-                
-    <!--           <h1>Issues</h1>-->
-    <!--           <h4 id= "Issue">Create New Issue</h4>-->
-    <!--        </div>-->
-    <!--    <div id = "Filters">-->
-    <!--               <h4 id = "Filter">Filter by:</h4>-->
-    <!--                <h4 class = "highlight" id = "All">ALL</h4>-->
-    <!--                <h4 class = "highlight" id = "Open">OPEN</h4>-->
-    <!--                <h4 class = "highlight" id = "Tickets">MY TICKETS</h4>-->
-    <!--            </div>-->
-    <!--            </div>-->
-                
-    <!--            <div id = "content">  -->
-                
-                
-    <!--            </div>-->
-    <!--        </div>-->
-
-		   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                
-    <script src="/app.js" type="text/javascript"></script>
-   </body>
-   
-    
-     </html>
-              
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>BugMe Issue Tracker- Home</title>
+        <link rel="stylesheet" href="style.css">
+		<style>
+			tr[data-href]{
+				cursor: pointer;
+		</style>
+    </head>
+    <body id="dashboard">
+        <div>
+            <!-- Black Header -->
+            <div class = "header"> 
+                <div id="header-container">
+                    <img id="image" src = "./icons/bug white.png"/> 
+                    <h3 id="bugme"> Bugme Issue Tracker</h3> 
+                </div>      
+           </div>
+           
+           <!-- Tracker Body-->
+           <div id="tracker_body">
+                <!-- Side Navigation -->
+                <div id = "nav">
+                    <div id ="link">
+                        <p id = "home_btn"><img src="./icons/Home icon.png"> Home</p> <br>
+                        <p id = "user_link"><img src="./icons/add user.png"> Add New User</p><br>
+                        <p id = "Issue_link"> <img src="./icons/new.png"> New Issue </p><br>
+                        <p id = "Logout"><img src="./icons/Logout.png"> Logout</p>
+                    </div> 
+                </div>
+                <!-- Issues -->
+                <div id="issues_wrapper">
+                    <div id="issue-heading">
+                        <h1>Issues</h1>
+                        <button id="createIssue" onclick="window.location.href = 'https://w3docs.com';">Create New Issue</button>
+                    </div>
+                    <!--Filter By-->
+                    <div id="filter-options">
+                        <h4>Filter By:</h4>
+                        <button class="btn active" onclick="filterSelection('all')"> ALL</button>
+                        <button class="btn" onclick="filterSelection('open')"> OPEN</button>
+                        <button class="btn" onclick="filterSelection('mytickets')"> MY TICKETS</button>
+                    </div>
+                    <div id="issue-content">
+                        <table style="width:100%">
+                            <tr id="issue-content-header">
+                                <th>Title</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Assigned To</th>
+                                <th> Created</th>
+                            </tr>
+                            <!--Add the while loop here to get the data from the db and populate it using the example that I showed you-->
+                            <tr data-href = detailspage.html>
+                                <td id="issue-title">Test</td>
+                                <td id="issue-type">Test</td>
+                                <!--The Status here should be something that is coming from the DB this is what helps to style the status buttons-->
+                                <td id="issue-status" data-status="{{Status}}"><button>Test</button></td>
+                                <td id="issue-assignee">Test</td>
+                                <td id="issue-created">Test</td>
+                            </tr>
+                            <!--These are hardcoded examples to show that the various button colors work based on status. Remove once you have added the while loop that pulls data from the DB-->
+                            <tr data-href = detailspage.html>
+                                <td id="issue-title">Test</td>
+                                <td id="issue-type">Test</td>
+                                <td id="issue-status" data-status="open"><button>Test</button></td>
+                                <td id="issue-assignee">Test</td>
+                                <td id="issue-created">Test</td>
+                            </tr>
+                            <tr data-href = detailspage.html>
+                                <td id="issue-title">Test</td>
+                                <td id="issue-type">Test</td>
+                                <td id="issue-status" data-status="closed"><button>Test</button></td>
+                                <td id="issue-assignee">Test</td>
+                                <td id="issue-created">Test</td>
+                            </tr>
+                            <tr data-href = detailspage.html>
+                                <td id="issue-title">Test</td>
+                                <td id="issue-type">Test</td>
+                                <td id="issue-status" data-status="in progress"><button>Test</button></td>
+                                <td id="issue-assignee">Test</td>
+                                <td id="issue-created">Test</td>
+                            </tr>
+                        </table>
+						
+						<script>
+							element.addEventListener("click, () )=>{ 
+								const rows = document.querySelectAll("tr[data-href]");
+						
+								rows.forEach(row =>(
+									test.addEventListener("click":, (detailspage.html)) =>{
+										window.location.href = test.dataset.href;
+									}};
+								}};
+							}};
+						</script>
+					
+                    </div>
+                </div>
+           </div>
+        </div>		
+    </body>
+</html>
