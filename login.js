@@ -12,9 +12,9 @@ window.onload =()=> {
             url: "/PHP SCRIPTS/login.php",
             data: $("#login-form").serializeArray(), 
             success: function(data) {
-                let dash_content = window.location.replace("/PHP SCRIPTS/dashboard.php");
+               window.location.replace("/HTML FILES/dash.php");
                 
-                let result = document.getElementById("dashboard"); 
+                let results = document.getElementById("content"); 
                 results.innerHTML = data;
 
                 

@@ -4,14 +4,17 @@ window.onload = () =>{
     let home= document.getElementById("home_btn");
     home.addEventListener("click", (e)=>{
          console.log("HOME BTN CLICKED");
+        //  $("#dashboard").hide();
+        $("#header").show();
+        
        $.ajax({
             type: "POST",
             url: "/PHP SCRIPTS/dashboard.php",
             data: $("#login-form").serializeArray(), 
             success: function(data) {
             
-                // let result = document.getElementById("content");
-                // result.innerHTML = data;
+                let result = document.getElementById("dashboard");
+                result.innerHTML = data;
                 
                 
              
@@ -29,41 +32,25 @@ window.onload = () =>{
         
                 $("#fields").hide();
                 $("#Filters").hide();
-                $("#output_table").hide();
-                
+            $("#output_table").hide();
                 
        $.ajax({
             type: "POST",
             url: "/PHP SCRIPTS/newuser.php",
             data: $("#submit").serializeArray(), 
-            // success: function(data) {
+            success: function(data) {
             //     //  header("Location: /HTML FILES/newuser.html");
-                 
-                dataType: "text"
-                    
-           }).done((data)=> {
-                    
-                var result = document.getElementById("content");
+                 var result = document.getElementById("content");
                 result.innerHTML = data;
                 
                    $("#submit").submit((e)=>{
                         e.preventDefault();
                       });
+       },
+                dataType: "text"
                     
+           });
                     
-                    
-                      $("#SUCCESS").text(data);
-                     
-                    //  success_msg.val('');
-                    
-                    
-                    
-                }).fail( (data)=>{
-                    
-                    $("#SUCCESS").removeClass('success');
-                    $("#SUCCESS").addClass('error');
-                });
-                
                      
                 
     });
@@ -74,10 +61,9 @@ window.onload = () =>{
         Issue_link.addEventListener("click", (e)=>{
          e.preventDefault();
          console.log("CREATE NEW ISSUE CLICKED");
-                 $("#fields").hide();
+          $("#fields").hide();
                 $("#Filters").hide();
-                 $("#output_table").hide();
-                
+                                $("#output_table").hide();
        $.ajax({
             type: "POST",
             url: "/PHP SCRIPTS/createissue.php",
@@ -109,10 +95,10 @@ window.onload = () =>{
        $.ajax({
             type: "POST",
             url: "/PHP SCRIPTS/logout.php",
-            data: "YOU have logged out",
+            data: "/HTML FILES/logout.html",
             success: function(data) {
             
-                let result = document.getElementById("home-page");
+                let result = document.getElementById("dashboard");
                 result.innerHTML = data;
                 
              

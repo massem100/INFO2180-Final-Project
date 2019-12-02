@@ -15,6 +15,7 @@ $dbname = "schema";
 
     <?php 
     
+    
              
             $conn = new PDO("mysql: host=$host; dbname=$dbname;", $dbusername, $dbpass);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -22,7 +23,7 @@ $dbname = "schema";
             $stmt = $conn-> query("SELECT * FROM issues"); 
 			$results = $stmt -> fetchAll(PDO::FETCH_ASSOC);
 			
-// 			header("Location: /HTML FILES/dashboard.html");
+
             
              echo' <div class = "header"> 
               <div id= "header-container">
@@ -37,8 +38,8 @@ $dbname = "schema";
                   <div id ="link">
                      <p id = "home_btn"><img src="/icons/Home icon.png" > Home</p> <br>
                     <p id = "user_link"><img src="/icons/add user.png" > Add New User</p><br>
-                       <p id = "Issue_link" > <img src="/icons/new.png" > New Issue </p><br>
-                       <p id = "Logout" ><img src="/icons/Logout.png" > Logout</p>
+                      <p id = "Issue_link" > <img src="/icons/new.png" > New Issue </p><br>
+                      <p id = "Logout" ><img src="/icons/Logout.png" > Logout</p>
                      </div>
                      
             </div>';
